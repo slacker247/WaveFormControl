@@ -1,0 +1,1702 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TEV_WaveformControl</name>
+    </assembly>
+    <members>
+        <member name="T:TEV_WaveformControl.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TEV_WaveformControl.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TEV_WaveformControl.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:TEV_WaveformControl.TimeScale">
+             <list type="table">
+                 <listheader>
+                     <term>Author</term>
+                     <description>Version</description>
+                 </listheader>
+                 <item>
+                     <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                           Jeff McCartney</a></term>
+                     <description>0.1</description>
+                 </item>
+             </list>
+            
+             <summary>
+             Class: TimeScale
+             
+             The time measurement units that can be displayed by
+             the <see cref="T:TEV_WaveformControl.TimeSample"/> class.
+             </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeScale.SECONDS">
+            <summary>Used to denote time in seconds.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeScale.MILLISECONDS">
+            <summary>Used to denote time in  milliseconds
+            10^(-3) seconds </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeScale.MICROSECONDS">
+            <summary>Used to denote time in microseconds.
+            10^(-6) seconds</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeScale.NANOSECONDS">
+            <summary>Used to denote time in nanoseconds.
+            10^(-9) seconds</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeScale.PICOSECONDS">
+            <summary>Used to denote time in picoseconds.
+            10^(-12) seconds</summary>
+        </member>
+        <member name="T:TEV_WaveformControl.TimeSample">
+             <list type="table">
+                 <listheader>
+                     <term>Author</term>
+                     <description>Version</description>
+                 </listheader>
+                 <item>
+                     <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                           Jeff McCartney</a></term>
+                     <description>0.1</description>
+                 </item>
+             </list>
+            
+             <summary>
+             Class: TimeSample
+            
+             This class was created to support a smaller
+             time slice down to PicoSeconds unlike the built in
+             TimeSpan which only supports down to microseconds.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TimeSample.m_PicoSeconds">
+            <summary>The number of picoseconds this class represents.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.TimeSample.#ctor(System.Single,TEV_WaveformControl.TimeScale)">
+             <summary>Constructor: Initializes the class to the given
+             Time value and the specified time measurement.
+             </summary>
+            
+             <param name="time">A float representing the amount of
+             time to be stored.</param>
+             <param name="scale">A <see cref="T:TEV_WaveformControl.TimeScale"/> referencing
+             the units that the time param is in.
+             </param>
+            
+             <returns>Returns an instance of the class.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TimeSample.parseTime(System.String)">
+             <summary>Parses a string representing the time measurement.
+             This string should follow the format #.## with a trailing
+             unit:'s', 'ms', 'us', 'ns', 'ps'</summary>
+            
+             <param name="time">A String representing the time
+             measurement.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 indicating an error.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TimeSample.setTime(System.Single,TEV_WaveformControl.TimeScale)">
+             <summary>Takes the given time and the unit of measure
+             and sets this class to those values.</summary>
+            
+             <param name="time">A float representing the time measurement.
+             </param>
+             <param name="scale">A <see cref="T:TEV_WaveformControl.TimeScale"/> value
+             representing the unit of measure.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 indicating an error.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TimeSample.getTime(TEV_WaveformControl.TimeScale)">
+             <summary>Returns the time measurement in the requested
+             unit of measure.</summary>
+            
+             <param name="scale">A <see cref="T:TEV_WaveformControl.TimeScale"/> that
+             represents the unit of measure to return the time
+             value in.</param>
+            
+             <returns>Returns the time measurement in the requested
+             unit of measure as a float.
+             </returns>
+        </member>
+        <member name="T:TEV_WaveformControl.Header">
+            <summary>
+            Contains all the information to draw a header row
+            on the O-Scope Control.</summary>
+            
+            <list type="table">
+                <listheader>
+                    <term>Author</term>
+                    <description>Version</description>
+                </listheader>
+                <item>
+                    <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                          Jeff McCartney</a></term>
+                    <description>0.1</description>
+                </item>
+            </list>
+        </member>
+        <member name="F:TEV_WaveformControl.Header.m_Name">
+            <summary>
+            The name of the row that will also be used when
+            displayed in the header.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Header.m_Samples">
+            <summary>
+            The samples that will be displayed in the header for
+            this row.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Header.m_ShowGridLines">
+            <summary>
+            Denotes whether or not this row will have corresponding
+            grid lines displayed across all graphs.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.#ctor">
+            <summary>
+            Constructor: initializes the class.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.#ctor(System.String)">
+            <summary>
+            Constructor: initializes the class.  This also sets
+            the row name based on the passed in value.
+            </summary>
+            
+            <param name="name">The name of the row.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.init">
+            <summary>
+            Creates a samples instance and sets the gride lines to
+            false.
+            </summary>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.setSamples(System.Collections.Specialized.OrderedDictionary)">
+            <summary>
+            Sets this header row's samples to the provided 
+            samples.
+            </summary>
+            
+            <param name="samples">A collection of data points, where
+            TimeSample is the key and a float is the value.</param>
+            
+            <returns>Returns 0 for success and -1 if an error
+            occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.addSample(TEV_WaveformControl.TimeSample,System.Object)">
+            <summary>
+            Adds a single sample to the collection of samples for
+            this header row.
+            </summary>
+            
+            <param name="time">A <see cref="T:TEV_WaveformControl.TimeSample"/> representing
+            The time stamp at which this sample occurs</param>
+            <param name="value">An object of any type as long as the
+            ToString function is implemented.  This represents the
+            value that this sample contains.
+            </param>
+            
+            <returns>Returns 0 for success and -1 if an error
+            occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.showGridLines(System.Boolean)">
+            <summary>
+            Denotes whether or not that the header row will display
+            grid lines at the sample points.
+            </summary>
+            
+            <param name="show">A bool that represents whether or
+            not to display grid lines.</param>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.getName">
+            <summary>
+            Gets the name of this header row.
+            </summary>
+            
+            <returns>Returns a string representing the name of this
+            header row.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.setName(System.String)">
+            <summary>
+            Sets the name for this header row.
+            </summary>
+            
+            <param name="name">A String representing the name of
+            this header row.</param>
+            
+            <returns>Returns 0 for success and a -1 if an error
+            occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.getSamples">
+            <summary>
+            Gets the samples that this header row contains, where
+            the key is a TimeSample and the value is an object.
+            </summary>
+            
+            <returns></returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Header.hasGridLines">
+            <summary>
+            Denotes whether or not this class will display grid
+            lines.
+            </summary>
+            
+            <returns>Returns a bool where true indicates that this
+            class will show grid lines and false indicating that
+            it will not.</returns>
+        </member>
+        <member name="T:TEV_WaveformControl.Pin">
+            <summary>
+            Contains all the information to draw the pin
+            data on the O-Scope Control.
+            
+            If the pin is set to digital, the high/low threshold
+            values must be set.  Otherwise they will be defaulted
+            to 2.7/2.3 respectively.</summary>
+            
+            <list type="table">
+                <listheader>
+                    <term>Author</term>
+                    <description>Version</description>
+                </listheader>
+                <item>
+                    <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                          Jeff McCartney</a></term>
+                    <description>0.2</description>
+                </item>
+            </list>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.RISING">
+            <summary>Denotes that the strobe should indicate a 
+            rising state of the pin.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.FALLING">
+            <summary>Denotes that the strobe should indicate a 
+            falling state of the pin.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.BOTH">
+            <summary>Denotes that the strobe should indicate
+            either a rising or falling state of the pin.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_Name">
+            <summary>The reference name of the pin.  This will be
+            displayed to the user.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_ID">
+            <summary>The id assigned to the pin.  This will be
+            displayed to the user.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_ResponseColor">
+            <summary>The color of the response signal line that
+            will be displayed to the user.  The response is the
+            captured signal from the line</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_PatternColor">
+            <summary>The color of the pattern signal line that
+            will be displayed to the user.  The pattern is
+            the signal that is sent on the line.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_StrobeColor">
+            <summary>The color of the strobe indicators that will
+            be displayed to the user.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_Digital">
+            <summary>Indicates whether or not this pin is a digital
+            signal or an analog signal.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_ResponseSamples">
+            <summary>This is a map of TimeScale objects and a float
+            value that represent the response on the given pin.
+            The TimeScale is when the measurement occurred and the
+            float value is the value in volts/amps of the
+            measurement.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_PatternSamples">
+            <summary>This is a map of TimeScale objects and a float
+            value that represent the pattern on the given pin.
+            The TimeScale is when the measurement occurred and the
+            float value is the value in volts/amps of the
+            measurement.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_Strobes">
+            <summary>strobe a marker indicating what the state of
+            the line should be, either rising, falling, or both.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Pin.m_MaxVolt">
+            <summary>Keeps track of the maxium voltaget reached in
+            the sample values.</summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.#ctor(System.String,System.String,System.Drawing.Pen)">
+             <summary>Constructor: Creates a pin with the given
+             values.</summary>
+            
+             <param name="name">A String representing the name of
+             the pin.</param>
+             <param name="id">A String representing the id of the
+             pin.</param>
+             <param name="c">A <see cref="T:System.Drawing.Pen"/> representing the
+             response color of the pin. By default this sets the
+             pattern color as well.</param>
+            
+             <returns>Returns an instance of the class.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.init">
+            <summary>Initializes the needed variables.</summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getMaxVolt">
+             <summary>This is the maximum voltage contained within
+             the samples.</summary>
+            
+             <returns>Returns a float representing the maximum
+             voltage contained within the samples.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getName">
+             <summary>The name of the pin.</summary>
+            
+             <returns>Returns a String representing the name of the
+             pin.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setDigital(System.Boolean)">
+             <summary>Denotes whether this pin has digital data or
+             analog data.</summary>
+            
+             <param name="digital">A bool where true indicates
+             that this pin is digital and false indicates that it
+             is analog.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.  Note: currently
+             not implemented.  Always returns -1.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.isDigital">
+             <summary>Denotes whether this pin has digital data or
+             analog data.</summary>
+            
+             <returns>Returns True indicating that this pin is digital
+             and false indicating that it is analog.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setName(System.String)">
+             <summary>Sets the label for the pin.</summary>
+            
+             <param name="name">A String representing a label for the
+             pin.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getID">
+             <summary>The ID of the pin</summary>
+            
+             <returns>Returns a String representing the ID of the
+             pin.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setID(System.String)">
+             <summary>Sets the id to the given value.</summary>
+            
+             <param name="id">A String representing the pin's id.  This
+             is a fixed length of 8 characters.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getResponseColor">
+             <summary>Gets the color that will be used to display
+             the response signal line.</summary>
+            
+             <returns>Returns an instance of Pen that contains the
+             color.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setResponseColor(System.Drawing.Pen)">
+             <summary>Sets the color that will be used to display
+             the response signal line.</summary>
+            
+             <param name="color">A <see cref="T:System.Drawing.Pen"/> instance that
+             contains the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurres.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getPatternColor">
+             <summary>Gets the color that will be used to display
+             the pattern signal line.</summary>
+            
+             <returns>Returns an instance of Pen that contains the
+             color.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setPatternColor(System.Drawing.Pen)">
+             <summary>Sets the color that will be used to display
+             the pattern signal line.</summary>
+            
+             <param name="color">A <see cref="T:System.Drawing.Pen"/> instance that
+             contains the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurres.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.addResponseSample(TEV_WaveformControl.TimeSample,System.Single)">
+             <summary>Adds a sample to the pin.  A sampe consists
+             of a time in which it occurred, usually a measurement
+             in microseconds.  Then the value, which is usually
+             a plus or minus value representing the volts/amps.</summary>
+            
+             <param name="time">A <see cref="T:TEV_WaveformControl.TimeScale"/> representing
+             time in which the measurement occurred, usually in
+             microseconds.</param>
+             <param name="value">a plus or minus float value
+             representing the volts/amps.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.addPatternSample(TEV_WaveformControl.TimeSample,System.Single)">
+             <summary>Adds a sample to the pin.  A sampe consists
+             of a time in which it occurred, usually a measurement
+             in microseconds.  Then the value, which is usually
+             a plus or minus value representing the volts/amps.</summary>
+            
+             <param name="time">A <see cref="T:TEV_WaveformControl.TimeSample"/> representing
+             time in which the measurement occurred, usually in
+             microseconds.</param>
+             <param name="value">A plus or minus float value
+             representing the volts/amps.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getResponseSamples">
+             <summary>A map containing all of the samples for this
+             pin.  Where the key is the TimeSample and the value is
+             the measured value in Volts/Amps.</summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the TimeSample and the value being the
+             measured value in Volts/Amps.  If the samples have not
+             been set then this will return null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getPatternSamples">
+             <summary>A map containing all of the samples for this
+             pin.  Where the key is the TimeSample and the value is
+             the measured value in Volts/Amps.</summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the TimeSample and the value being the
+             measured value in Volts/Amps.  If the samples have not
+             been set then this will return null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.addStrobe(TEV_WaveformControl.Strobe)">
+             <summary>Adds a strobe to the pin at the given time
+             span and with one of the following constants:
+             RISING, FALLING, BOTH.</summary>
+            
+             <param name="st">A <see cref="T:TEV_WaveformControl.Strobe"/> representing
+             a strobe marker.
+             </param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if the strobe already exists.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getStrobes">
+             <summary>A map containing all the strobes for this pin.
+             Where the key is the <see cref="T:TEV_WaveformControl.TimeSample"/> and the
+             value indicates that the signal should be
+             Rising/Falling/Both.</summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the <see cref="T:TEV_WaveformControl.TimeSample"/> and the value
+             being the Rising/Falling/Both constants.  If the samples
+             have not been set then this will return null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.getStrobeColor">
+             <summary>The color used to display the strobes.</summary>
+            
+             <returns>Returns a Pen instance containing the color
+             to be used to draw a strobe.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.setStrobeColor(System.Drawing.Pen)">
+             <summary>Sets the color that will be used to display
+             the strobes.</summary>
+            
+             <param name="pen">A <see cref="T:System.Drawing.Pen"/> instance containing the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurres.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Pin.NotifyPropertyChanged(System.String)">
+             Function: name
+            
+             <summary>The function is used to notify clients,
+             typically binding clients, that a property value has
+             changed.</summary>
+            
+             <param>name: The reference name associated with the
+             member variable.</param>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.Name">
+             <summary>The name of the pin.</summary>
+            
+             <returns>Returns a String representing the name of the
+             pin.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.ID">
+             <summary>The ID of the pin</summary>
+            
+             <returns>Returns a String representing the ID of the
+             pin.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.ResponseColor">
+             <summary>The color that will be used to display the
+             pin's response signal.</summary>
+            
+             <returns>Returns a Pen instance containing the color
+             to be used to draw the signal.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.PatternColor">
+             <summary>The color that will be used to display the
+             pin's pattern signal.</summary>
+            
+             <returns>Returns a Pen instance containing the color
+             to be used to draw the signal.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.StrobeColor">
+             <summary>The color used to display the strobes.</summary>
+            
+             <returns>Returns a Pen instance containing the color
+             to be used to draw a strobe.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.Digital">
+             <summary>Indicates whether or not this pin is a digital
+             signal</summary>
+            
+             <returns>Returns a bool where true indicates that this
+             is a digital pin and false indicates that it is an
+             analog pin.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.PatternSamples">
+             <summary>A map containing all of the samples for this
+             pin.  Where the key is the TimeSample and the value is
+             the measured value in Volts/Amps.</summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the TimeSample and the value being the
+             measured value in Volts/Amps.  If the samples have not
+             been set then this will return null.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.ResponseSamples">
+             <summary>A map containing all of the samples for this
+             pin.  Where the key is the TimeSample and the value is
+             the measured value in Volts/Amps.</summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the TimeSample and the value being the
+             measured value in Volts/Amps.  If the samples have not
+             been set then this will return null.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.Strobes">
+             <summary>A map containing all the strobes for this pin.
+             Where the key is the TimeSample and the value indicates
+             that the signal should be Rising/Falling/Both.
+             </summary>
+            
+             <returns>Returns an OrderedDictionary consisting of
+             the key being the TimeSample and the value being the
+             Rising/Falling/Both constants.  If the samples have not
+             been set then this will return null.
+             </returns>
+        </member>
+        <member name="P:TEV_WaveformControl.Pin.MaxVolt">
+             <summary>This is the maximum voltage contained within
+             the samples.</summary>
+            
+             <returns>Returns a float representing the maximum
+             voltage contained within the samples.
+             </returns>
+        </member>
+        <member name="E:TEV_WaveformControl.Pin.PropertyChanged">
+             Variable: PropertyChanged
+            
+             <summary>Represents the method that will handle the
+             PropertyChanged event raised when a property is changed
+             on a component.</summary>
+        </member>
+        <member name="T:TEV_WaveformControl.TEV_WaveformControl">
+            <summary>
+            This control is designed to recreate an
+            oscilloscope.  It has the following functions:
+            
+            Displays the elapsed signal data for a Pin over a given
+            time period. 
+            
+            This control can zoom the entire view or it can zoom
+            just along the time axis.
+            
+            This control supports the use of cursors to measure 
+            signals.
+            
+            This control supports the realtime measurement of signal
+            transitions.
+            
+            The footer time step is adjustable.
+            
+            Has a customizable header.
+            
+            Has a customizable theme.
+            </summary>
+            
+            <list type="table">
+                <listheader>
+                    <term>Author</term>
+                    <description>Version</description>
+                </listheader>
+                <item>
+                    <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                          Jeff McCartney</a></term>
+                    <description>0.2</description>
+                </item>
+            </list>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CURSOR_LEFT">
+            <summary>This is an index into the cursor array for
+            the left cursor.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CURSOR_RIGHT">
+            <summary>This is an index into the cursor array for
+            the right cursor.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CURSOR_TOP">
+            <summary>This is an index into the cursor array for
+            the top cursor.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CURSOR_BOTTOM">
+            <summary>This is an index into the cursor array for
+            the bottom cursor.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Name">
+            <summary>The name of the graph. Do we still need this?
+            Make it part of the header?</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_GraphMode">
+            <summary>Denotes which graph mode will be used when
+            displaying the graph.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_OverlayOffset">
+            <summary>
+            The x/y offset of the overlay signal in pixels.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Theme">
+            <summary>The theme that will be used to display the
+            graph.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Pins">
+            <summary>This is a map with the key pinID, and value
+            pinData.  This stores all the pins.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_ShowStrobes">
+            <summary>
+            Denotes whether or not to show the strobes.  True means
+            that they will be shown and false means that they will
+            not be shown.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_ShowStrobeFailState">
+            <summary>
+            Denotes whether or not to show the fail state of all
+            the strobes.  True means that they will be shown and
+            false means that they will not be shown.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Scale">
+            <summary>This controls the x/y zooming of the graph.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_xScale">
+            <summary>This controls the x scaling of the graph
+            data only.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_yScale">
+            <summary>This controls the y scaling of the graph
+            data only.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_DrawWindow">
+            <summary>The viewable area that can be drawn in.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_ShowGridLines">
+            <summary>Denotes whether or not their will be grid
+            lines every so often on the graph.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Cursors">
+            <summary>Contains the location data for each of the 
+            measurement cursors that can be displayed on the screen.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_CursorMode">
+            <summary></summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_HeaderSpace">
+            <summary>The number of pixels the header takes up.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_FooterSpace">
+            <summary>The location in which the footer starts.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_HeaderRows">
+            <summary>The rows that will be displayed at the top
+            of the graph in the header region.  The first dictionary
+            contains the label for the row and the other dictionary
+            is the value that will show up at the given TimeSample.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_DashedPen">
+            <summary>This is a general use pen to allow the drawing
+            of dashed lines.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_hScrollMax">
+            <summary>Used to track/calculate the horizontal scroll
+            maximum size.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_hScrollStep">
+            <summary>Used to track/calculate the horizontal scrol
+            step size.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_GridStepping">
+            <summary>Denotes how often the grid lines will appear.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_GraphStepping">
+            <summary>Denotes how often the graph time labels
+            will appear.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_TimeScale">
+            <summary>Denotes the TimeScale that the graph will
+            used to display the time measurements in.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_TransitionSpan">
+            <summary>True will show the measurement between to
+            transitions of the signal. False will not.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_SelectedPin">
+            <summary>
+            The currently selected pin.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_SelectedPinPos">
+            <summary>
+            The y location of the currently selected pin.  Where
+            x is the low y value and y is the high y value.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_MousePos">
+            <summary>Keeps track of the mouse location.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_MouseState">
+            <summary>Keeps track of which button was pushed on the
+            mouse.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.m_Digital">
+            <summary>This controls how the lines are drawn of the 
+            signal.  True indicates that when going from one time
+            measurement to the next, it will draw a step between
+            the two and false means that it will draw a strait
+            line between the two.</summary>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.#ctor">
+             <summary>Constructor: Initializes the gui components
+             and sets member variables to known states.  Then sets
+             up the viewable area.</summary>
+            
+             <returns>Returns an instance of the class.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setGraph(System.String,TEV_WaveformControl.Theme)">
+             <summary>Initializes the graph with the given name and
+             the given theme.  Then sets the scale to 20 units.
+             </summary>
+            
+             <param name="name">A <see cref="T:System.String"/> representing
+             the name of the graph.</param>
+             <param name="theme">The <see cref="T:TEV_WaveformControl.Theme"/> contains the
+             colors to be used to draw the graph.
+             </param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.init">
+            <summary>Sets member variables to default values.</summary>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.addHeaderRow(TEV_WaveformControl.Header)">
+             <summary>Adds a label and data to the header area.
+             </summary>
+            
+             <param name="row">A <see cref="T:TEV_WaveformControl.Header"/> object with
+             the row information to be displayed.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be:<br/>
+             -1 for a general error.<br/>
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getGraphMode">
+            <summary>
+            Gets the current graph mode being used.
+            </summary>
+            
+            <returns>Returns the current graph mode being used.
+            </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setGraphMode(TEV_WaveformControl.TEV_WaveformControl.GraphMode)">
+            <summary>
+            Sets the graph mode to use when displaying the graph.
+            </summary>
+            
+            <param name="mode">Denotes the graph mode to use.</param>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.
+            </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setOverlayOffset(System.Drawing.Point)">
+            <summary>
+            This sets the offset in pixels for the overlay mode.
+            The offset moves the response signal based on the
+            Point that is provide.
+            </summary>
+            
+            <param name="offset">A Point representing the offset
+            to use for the overlay mode.</param>
+            
+            <returns>Returns 0 for success and a -1 if an error
+            occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getOverlayOffset">
+            <summary>
+            Gets the offset, as a Point, to be used when displaying
+            the overlay mode.
+            </summary>
+            
+            <returns>Returns the offset, as a Point, to be used
+            when displaying the overlay mode.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.showStrobes(System.Boolean)">
+            <summary>
+            Denotes whether or not the strobes will be displayed.
+            </summary>
+            
+            <param name="show">A bool where true indicates that
+            the strobes will be displayed and false indicates
+            that they will not be displayed.</param>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.showStrobeFailState(System.Boolean)">
+            <summary>
+            Denotes whether or not a strobe's fail state should be
+            shown.
+            </summary>
+            
+            <param name="show">A bool where true indicates that
+            the strobe's fail states will be displayed and false
+            indicates that they will not be displayed.</param>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setSelectedPin">
+            <summary>
+            Not implemented yet.
+            </summary>
+            
+            <returns></returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getSelectedPin">
+            <summary>
+            Gets the currently selected pin.
+            </summary>
+            
+            <returns>Returns a <see cref="T:TEV_WaveformControl.Pin"/> representing the
+            currently selected pin.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setGraphStepping(System.Int32)">
+            <summary>
+            Sets the interval to display time labels on
+            the graph in the footer region.
+            </summary>
+            
+            <param name="step">An int representing how often these
+            labels will be displayed.</param>
+            
+            <returns>Returns 0 for success and a -1 if an error
+            occurs.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getGraphStepping">
+            <summary>
+            Gets the current stepping that is being used on this
+            graph.
+            </summary>
+            
+            <returns>Returns the current stepping that is being
+            used on this graph.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getGridStepping">
+             <summary>Gets the current stepping value for the
+             grid lines.</summary>
+            
+             <returns>Returns an int for the current stepping value
+             at which to show the grid lines.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setGridStepping(System.Int32)">
+             <summary>Sets the stepping value for which to show
+             the grid lines.</summary>
+            
+             <param name="step">An int representing the step value
+             in the current TimeScale.</param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getCursorMode">
+            <summary>
+            Gets the current mode for displaying cursors.
+            </summary>
+            
+            <returns>Returns a <see cref="T:TEV_WaveformControl.TEV_WaveformControl.CursorMode"/> representing
+            the current mode for displaying the cursors.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setCursorMode(TEV_WaveformControl.TEV_WaveformControl.CursorMode)">
+            <summary>
+            Sets the mode for how the cursors will be displayed.
+            </summary>
+            
+            <param name="mode">A <see cref="T:TEV_WaveformControl.TEV_WaveformControl.CursorMode"/> object
+            that represents the way in which to display the
+            cursors.</param>
+            
+            <returns>-1 but the return value has yet to be
+            implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getTimeScale">
+             <summary>Gets the current TimeScale for the graph.
+             </summary>
+            
+             <returns>Returns the current TimeScale for the graph.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setTimeScale(TEV_WaveformControl.TimeScale)">
+             <summary>Sets the TimeScale to be used in the display
+             of the graph.</summary>
+            
+             <param name="scale">A <see cref="T:TEV_WaveformControl.TimeScale"/> instance.
+             </param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getTransitionSpan">
+             <summary>Denotes whether or not the transition span
+             will be shown.  </summary>
+            
+             <returns>Returns True means that it will and false
+             means that it won't.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setTransitionSpan(System.Boolean)">
+             <summary>Set whether or not to display the transition 
+             measurement.</summary>
+            
+             <param name="span">A bool where true means that the
+             transition measurement will be displayed and false
+             means that it won't.</param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.calcViewable">
+             <summary>Calculates the drawable window size and both
+             scroll bar sizes.  Then causes a redraw of the control.
+             </summary>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.updateScrollBars">
+            <summary>
+            Recalculates the scroll bars.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setScale(System.Single)">
+             <summary>Sets the xy scale or zoom of the graph.</summary>
+            
+             <param name="scale">A float for the new xy scale or
+             zoom value.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 indicating that the scale is less
+             than 0.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getScale">
+             <summary>Gets the current xy scale/zoom of the
+             graph.</summary>
+            
+             <returns>Returns a float the current xy scale/zoom of
+             the graph.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setxScale(System.Single)">
+             <summary>Sets the x scale value for the graph.</summary>
+            
+             <param name="scale">A float for the new scale value in
+             the x direction.
+             </param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if scale is less than 0.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getxScale">
+             <summary>Gets the value for the current x scale.
+             </summary>
+            
+             <returns>Returns the value for the current x scale.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.zoomToCursors">
+             <summary>Zooms in the x direction to expand the cursors
+             to the edge of the current viewable area.</summary>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be in the error lookup table: <see></see>
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setyScale(System.Single)">
+             <summary>Sets the y scale value for the graph.</summary>
+            
+             <param name="scale">A float for the new scale value in
+             the y direction.
+             </param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if scale is less than 0.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.getyScale">
+             <summary>Gets the value for the current y scale.
+             </summary>
+            
+             <returns>Returns the value for the current y scale.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setName(System.String)">
+             <summary>Sets the name of the graph.</summary>
+            
+             <param name="name">A <see cref="T:System.String"/> representing
+             the name of the graph.</param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.setTheme(TEV_WaveformControl.Theme)">
+             <summary>Sets the theme to be used when displaying the
+             graph.  Once set this function redraws the control.
+             </summary>
+            
+             <param name="theme">The <see cref="T:TEV_WaveformControl.Theme"/> contains the
+             colors to be used to draw the graph.</param>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:TEV_WaveformControl.TEV_WaveformControl.addPin(TEV_WaveformControl.Pin)" -->
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.clearPins">
+             <summary>Removes all of the pins from the graph.</summary>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.removePin(System.String)">
+             <summary>Removes a pin based on the given name.</summary>
+            
+             <param name="name">A <see cref="T:System.String"/> representing
+             the label name of the pin.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if it fails to remove the pin.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.clearCursors">
+             <summary>Turns off the display of the cursors.</summary>
+            
+             <returns>-1 but the return value has yet to be
+             implemented.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+             <summary>Draws the header, footer, graph, all of the pins,
+             the cursors and the TimeSpan measurement.  Also, updates
+             the scroll bar values.</summary>
+            
+             <param name="e"><see cref="T:System.Windows.Forms.PaintEventArgs"/>.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:TEV_WaveformControl.TEV_WaveformControl.getTimeAsString(TEV_WaveformControl.TimeSample,TEV_WaveformControl.TimeScale)" -->
+        <!-- Badly formed XML comment ignored for member "M:TEV_WaveformControl.TEV_WaveformControl.getTimeAsString(TEV_WaveformControl.TimeSample,TEV_WaveformControl.TimeScale,System.String)" -->
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.vs_ScrollBar_Scroll(System.Object,System.Windows.Forms.ScrollEventArgs)">
+             <summary>updates the display based on the new scroll
+             bar position.</summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.hs_ScrollBar_Scroll(System.Object,System.Windows.Forms.ScrollEventArgs)">
+             <summary>updates the display based on the new scroll
+             bar position.</summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.O_ScopeCtrl_Resize(System.Object,System.EventArgs)">
+             <summary>updates the display based on the new window
+             size.</summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.pbx_O_Scope_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+             <summary>Captures the mouse location and forces a redraw
+             of the control.  When the redraw occurs, the mouse button
+             state is taken into account and draws the cursors.</summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.pbx_O_Scope_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+             <summary>Captures the mouse button state. When the
+             redraw occurs, the mouse button state is taken into
+             account and draws the cursors.  Left button draws the
+             left cursor and the right button draws the right cursor.
+             </summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.pbx_O_Scope_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+             <summary>Releases the mouse button state stopping the
+             redraw of the cursors.</summary>
+            
+             <param name="sender">The control that called this
+             function.</param>
+             <param name="e">Any parameters that the calling control
+             wants to pass to this function.</param>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.TEV_WaveformControl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TEV_WaveformControl.TEV_WaveformControl.GraphMode">
+            <summary>Defines the viewable types that the graph
+            can display.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.GraphMode.MODE_STANDARD_PATTERN">
+            <summary>This displays the pattern on the pin</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.GraphMode.MODE_STANDARD_RESPONSE">
+            <summary>This displays the response on the pin</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.GraphMode.MODE_SPLIT">
+            <summary>This displays the pattern sent on the pin
+            on top and the response on the pin on the bottom.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.GraphMode.MODE_OVERLAY">
+            <summary>this displays the pattern sent on the pin
+            overlayed with the response on the pin.  The response is
+            offset from the pattern.</summary>
+        </member>
+        <member name="T:TEV_WaveformControl.TEV_WaveformControl.CursorMode">
+            <summary>Defines the types of cursors that can be
+            displayed.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CursorMode.OFF">
+            <summary>Switches the cursor mode off.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CursorMode.LEFT_RIGHT">
+            <summary>Switches the cursor mode to left and right
+            cursors.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.TEV_WaveformControl.CursorMode.TOP_BOTTOM">
+            <summary>Switches the cursor mode to top and bottom
+            cursors.</summary>
+        </member>
+        <member name="T:TEV_WaveformControl.Theme">
+             <list type="table">
+                 <listheader>
+                     <term>Author</term>
+                     <description>Version</description>
+                 </listheader>
+                 <item>
+                     <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                           Jeff McCartney</a></term>
+                     <description>0.2</description>
+                 </item>
+             </list>
+            
+             <summary>
+             Class: Theme
+            
+             This class stores the various colors for the display
+             of the O-Scope Control.
+             </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_Font">
+            <summary>The font that will be used for the display
+            of the text in the O-Scope Control</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_FontBrush">
+            <summary>The color of the font</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_BackgroundBrush">
+            <summary>This is the background color.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_GraphPen">
+            <summary>This is the graph lines color. The graph
+            includes x/y axis, hash marks, and border lines.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_TimeSpanPen">
+            <summary>The timeSpan Measures the distance between
+            two transitions. This variable stores the color of
+            both the text and line that represents this info.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_CursorPen">
+            <summary>The vertical/horizontal cursors color.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Theme.m_PinSelection">
+            <summary>
+            The color to use when displaying a selected pin.
+            </summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.#ctor">
+             <summary>Constructor: Initializes the class to a
+             default theme.</summary>
+            
+             <returns>Returns an instance of the theme class.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+             <summary>Constructor: Deserialization constructor.</summary>
+            
+             <param name="info">Is a <see cref="T:System.Runtime.Serialization.SerializationInfo"/>
+             that stores all the data needed to serialize or deserialize
+             this object.</param>
+             <param name="ctxt">Is a <see cref="T:System.Runtime.Serialization.StreamingContext"/>
+             that describes the source and destination of a given
+             serialized stream, as well as a means for serialization
+             to retain that context and an additional caller-defined
+             context.</param>
+            
+             <returns>Returns an instance of the class.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+             <summary>Serialization function.</summary>
+            
+             <param name="info">Is a <see cref="T:System.Runtime.Serialization.SerializationInfo"/>
+             that stores all the data needed to serialize or deserialize
+             this object.</param>
+             <param name="ctxt">Is a <see cref="T:System.Runtime.Serialization.StreamingContext"/>
+             that describes the source and destination of a given
+             serialized stream, as well as a means for serialization
+             to retain that context and an additional caller-defined
+             context.</param>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getFont">
+             <summary>Returns the font that will be used for displaying
+             the text in the O-Scope control.</summary>
+            
+             <returns>Returns an instance of the font to be used or
+             null if it has yet to be defined.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setFont(System.Drawing.Font)">
+             <summary>Sets the given font to the theme font.</summary>
+            
+             <param name="f">The <see cref="T:System.Drawing.Font"/> to be used by
+             the theme.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 indicating an error has occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getFontColor">
+             <summary>Returns the color that will be used for the
+             text.</summary>
+            
+             <returns>Returns a Brush instance containing the
+             color to be used for drawing text.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setFontBrush(System.Drawing.Brush)">
+             <summary>Sets the color to be used for text.</summary>
+            
+             <param name="b">A <see cref="T:System.Drawing.Brush"/> that has the new
+             color to use for text.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getPinSelectionColor">
+            <summary>
+            Gets the brush that contains the color that will be
+            used to show a selected pin.
+            </summary>
+            
+            <returns>Returns a Brush instance representing the
+            color that will be used to show a selected pin.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setPinSelectionColor(System.Drawing.Brush)">
+            <summary>
+            Sets the pin selection color.
+            </summary>
+            
+            <param name="b">A Brush instance contain the color to
+            use to show a selected pin.</param>
+            
+            <returns>Returns a 0 for success and a -1 when an
+            error occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getBackground">
+             <summary>Returns a <see cref="T:System.Drawing.Brush"/> that has the
+             color of the background for the O-Scope.</summary>
+            
+             <returns>Returns a <see cref="T:System.Drawing.Brush"/> that has the
+             color of the background or null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setBackgroundBrush(System.Drawing.Brush)">
+             <summary>Sets the color to be used for the background.
+             </summary>
+            
+             <param name="b">A <see cref="T:System.Drawing.Brush"/> representing the
+             color to use for the background.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getGraphColor">
+             <summary>Returns an instance of Pen that stores the 
+             color used to draw the graph lines.</summary>
+            
+             <returns>Returns an instance of Pen that stores the 
+             color used to draw the graph lines or null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setGraphPen(System.Drawing.Pen)">
+             <summary>Sets the graph color.</summary>
+            
+             <param name="p">An instance of <see cref="T:System.Drawing.Pen"/>
+             containing the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getTimeSpanColor">
+             <summary>The timeSpan Measures the distance between
+             two transitions. This returns the color of both the
+             text and line that represents this info.</summary>
+            
+             <returns>Returns an instance of Pen that represents
+             the color or null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setTimeSpanPen(System.Drawing.Pen)">
+             <summary>The timeSpan Measures the distance between
+             two transitions. This sets the color of both the
+             text and line that represents this info.</summary>
+            
+             <param name="p">An instance of <see cref="T:System.Drawing.Pen"/> that
+             has the desired color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.getCursorColor">
+             <summary>Returns a Pen instance containing the color
+             that is currently being used to display cursors.</summary>
+            
+             <returns>Returns an instance of Pen containing the
+             color or null.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Theme.setCursorPen(System.Drawing.Pen)">
+             <summary>This sets the cursor color in the O-Scope
+             control.</summary>
+            
+             <param name="p">An Instance of <see cref="T:System.Drawing.Pen"/> that
+             contains the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurred.
+             </returns>
+        </member>
+        <member name="T:TEV_WaveformControl.Strobe">
+             <list type="table">
+                 <listheader>
+                     <term>Author</term>
+                     <description>Version</description>
+                 </listheader>
+                 <item>
+                     <term><a href="mailto:jeff.mccartney@aeroflex.com">
+                           Jeff McCartney</a></term>
+                     <description>0.1</description>
+                 </item>
+             </list>
+            
+             <summary>
+             Class: Strobe
+             
+             Represents a strobe marker on the graph.  A strobe is
+             a marker that shows the direction that the signal
+             should be going in.  This class also supports a window
+             for the strobe.  If it is not this class has a
+             fail flag that will need to be set to indicate that
+             the fail has occurred.  This class does not check
+             for signal state.
+             </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.m_StartTime">
+            <summary>
+            Denotes when the strobe should start looking for the
+            desired state.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.m_EndTime">
+            <summary>
+            Denotes when the strobe should stop looking for the
+            desired state.  This is set to the start time initially.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.m_State">
+            <summary>
+            The direction of that the strobe is looking for.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.m_Failed">
+            <summary>
+            Denotes whether or not the signal state failed to be
+            the same as the strobe.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.m_StrobeColor">
+            <summary>The color of the strobe indicators that will
+            be displayed to the user.</summary>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.getStartTime">
+            <summary>
+            Gets the <see cref="T:TEV_WaveformControl.TimeSample"/> representing when this
+            strobe starts.
+            </summary>
+            
+            <returns>Returns a <see cref="T:TEV_WaveformControl.TimeSample"/> representing
+            when this strobe starts.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.setStartTime(TEV_WaveformControl.TimeSample)">
+            <summary>
+            Sets where the strobe will start based on the provided
+            <see cref="T:TEV_WaveformControl.TimeSample"/>.
+            </summary>
+            
+            <param name="sample">The <see cref="T:TEV_WaveformControl.TimeSample"/> indicating
+            when this strobe occurs.</param>
+            
+            <returns>Returns 0 for success and -1 to indicate an
+            error has occurred.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.getEndTime">
+            <summary>
+            Gets the <see cref="T:TEV_WaveformControl.TimeSample"/> representing when this
+            strobes ends.
+            </summary>
+            
+            <returns>Returns the <see cref="T:TEV_WaveformControl.TimeSample"/> representing
+            when this strobes ends.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.setEndTime(TEV_WaveformControl.TimeSample)">
+            <summary>
+            Sets the end time of this strobe based on the
+            <see cref="T:TEV_WaveformControl.TimeSample"/> provided.
+            </summary>
+            
+            <param name="sample">A <see cref="T:TEV_WaveformControl.TimeSample"/> representing
+            the end time for this strobe.</param>
+            
+            <returns>Returns an instanc of <see cref="T:TEV_WaveformControl.TimeSample"/>
+            representing the end time for this strobe.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.getStrobeState">
+            <summary>
+            Gets a <see cref="T:TEV_WaveformControl.Strobe.StrobeState"/> representing the
+            state that this strobe is set to.
+            </summary>
+            
+            <returns>Returns a <see cref="T:TEV_WaveformControl.Strobe.StrobeState"/> representing
+            the state that this strobe is set to.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.setStrobeState(TEV_WaveformControl.Strobe.StrobeState)">
+            <summary>
+            Sets the state of this strobe to the provided
+            <see cref="!:StrobState"/> value.
+            </summary>
+            
+            <param name="state">A <see cref="!:StrobState"/> representing
+            the state that this strobe should be at.</param>
+            
+            <returns>Returns 0 for success and a -1 if an error
+            occurs.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.isFailed">
+            <summary>
+            Denotes whether or not the signal that this strobe
+            belongs to has failed at this strobe.
+            </summary>
+            
+            <returns>Returns a bool where true indicates that this
+            strobe failed or false indicating that it has not.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.setFailed(System.Boolean)">
+            <summary>
+            Sets whether or not this strobe should indicate that a
+            failure has occurred on the signal.
+            </summary>
+            
+            <param name="failed">A bool where true indicates that this
+            strobe failed or false indicating that it has not.</param>
+            
+            <returns>Returns a -1, Not yet implemented.</returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.getStrobeColor">
+             <summary>The color used to display the strobes.</summary>
+            
+             <returns>Returns a Pen instance containing the color
+             to be used to draw a strobe.
+             </returns>
+        </member>
+        <member name="M:TEV_WaveformControl.Strobe.setStrobeColor(System.Drawing.Pen)">
+             <summary>Sets the color that will be used to display
+             the strobes.</summary>
+            
+             <param name="pen">A <see cref="T:System.Drawing.Pen"/> instance containing the color.</param>
+            
+             <returns>Returns 0 for a success. Otherwise the
+             value will be -1 if an error occurres.
+             </returns>
+        </member>
+        <member name="T:TEV_WaveformControl.Strobe.StrobeState">
+            <summary>
+            Represents the states that this strobe can be in.
+            </summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.StrobeState.RISING">
+            <summary>Denotes that the strobe should indicate a 
+            rising state of the pin.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.StrobeState.FALLING">
+            <summary>Denotes that the strobe should indicate a 
+            falling state of the pin.</summary>
+        </member>
+        <member name="F:TEV_WaveformControl.Strobe.StrobeState.BOTH">
+            <summary>Denotes that the strobe should indicate
+            either a rising or falling state of the pin.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEV_WaveformControl", "TEV_WaveformControl\TEV_WaveformControl.csproj", "{AD69B23D-9441-410F-9B83-CF20056AE96F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waveform_Demo", "Waveform_Demo\Waveform_Demo.csproj", "{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Debug|x86.ActiveCfg = Debug|x86
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Debug|x86.Build.0 = Debug|x86
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Release|x86.ActiveCfg = Release|x86
+		{AD69B23D-9441-410F-9B83-CF20056AE96F}.Release|x86.Build.0 = Release|x86
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Debug|x86.ActiveCfg = Debug|x86
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Debug|x86.Build.0 = Debug|x86
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Release|x86.ActiveCfg = Release|x86
+		{8F6685DE-2AB0-4C92-A34A-5368A4819D5C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
